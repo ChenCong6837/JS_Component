@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Div_Drag</title>
+     <style>
+          #div1{
+               position: absolute;top: 0;left: 0;
+               border: 1px solid #000;
+               background-color: rebeccapurple;
+               width: 100px;height: 100px;
+          }
+     </style>
+</head>
+<body>
+     <div id="div1"></div>
+     <script>
+          var elem = document.getElementById('div1');
+          var clientX, clientY, moving;
+          var mouseDowmHandler = function(event){
+               event = event||window.event;
+               clientX = event.clientX;
+               clientY = event.clientY;
+               console.log(clientX + ',' + clientY);
+               moving = true; 
+          }
+          var mouseMoveHandler = function(event){
+               //如果鼠标没按下，直接返回
+               if(!moving){
+                    return;
+               }
+               event = event||window.event;
+               var newClientX = event.clientX;
+               var newClientY = event.clientY;
+               var left = parseInt(elem.style.left)||0;
+               var top = parseInt(elem.style.top)||0;
+               //更新left，top
+               elem.style.left = left + (newClientX - clientX) + 'px';
+               elem.style.top = top + (newClientY - clientY) + 'px';
+               //拖动可能有多次，所以要更新X,Y
+               clientX = newClientX;
+               clientY = newClientY;
+          }
+          var mouseUpHandler = function(event){
+               moving = false;
+          }
+          function addListener(target, type, handler) {
+               if(target.addEventListener) { //DOM2级方法存在的话
+                    target.addEventListener(type, handler, false);
+               } else if(target.attachEvent) { //兼容IE的做法
+                    target.attachEvent("on" + type, handler);
+               } else { //调用DOM0 级的方法
+                    target["on" + type] = handler;
+               }
+          }
+          addListener(elem, 'mousedowm', mouseDowmHandler);
+          addListener(elem, 'mousemove', mouseMoveHandler);
+          addListener(elem, 'mouseup', mouseUpHandler);
+     </script>
+</body>
+</html>
