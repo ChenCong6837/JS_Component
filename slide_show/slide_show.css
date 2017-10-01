@@ -1,72 +1,86 @@
-*{
-     margin:0;
-     padding:0;
-     text-decoration:none;
- }
- body{
-     padding:20px;
- }
- #container{ 
-     width:400px;
-     height:300px;
-     border:3px solid red;
-     overflow:hidden;
-     position: relative;
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
 }
- #list{
-     width:2800px;
-     height:300px;
-     position:absolute;
-     z-index:1;
- }
- #list img{
-     float:left;
- }
- #buttons{
-     position:absolute;
-     left:50%;
-     transform:translateX(-50%);
-     bottom:20px;
-     z-index:2;
- }
- #buttons span{
-     float:left;
-     width:10px;
-     height:10px;
-     cursor:pointer;
-     border:1px solid #FFF;
-     border-radius:50%;
-     background-color:#333;
-     margin-right:5px;
- }
- #buttons .on{
-     background-color:orangered;
- }
- #prev,#next{
-     position:absolute;
-     top:50%;
-     transform: translateY(-50%);
-     display:none;
-     z-index:2;
-     cursor:pointer;
-     width:40px;
-     height:40px;
-     line-height:39px;
-     font-size:36px;
-     font-weight:bold;
-     text-align:center;
-     color:#FFF;
-     background-color:RGBA(0,0,0,.3);
- }
- #prev{
-     left:20px;
- }
- #next{
-     right:20px;
- }
- #prev:hover,#next:hover{
-     background-color:RGBA(0,0,0,.7);
- }
- #container:hover .arrow{
-     display:block;
- }
+
+body {
+    padding: 20px;
+}
+
+#container {
+    width: 400px;
+    height: 300px;
+    border: 3px solid red;
+    overflow: hidden;
+    position: relative;
+}
+
+#list {
+    width: 2800px;
+    height: 300px;
+    position: absolute;
+    z-index: 1;
+}
+
+#list img {
+    float: left;
+}
+
+#buttons {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    z-index: 2;
+}
+
+#buttons span {
+    float: left;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    background-color: #333;
+    margin-right: 5px;
+}
+
+#buttons .on {
+    background-color: orangered;
+}
+
+#prev,
+#next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    z-index: 2;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    line-height: 39px;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    color: #FFF;
+    background-color: RGBA(0, 0, 0, .3);
+}
+
+#prev {
+    left: 20px;
+}
+
+#next {
+    right: 20px;
+}
+
+#prev:hover,
+#next:hover {
+    background-color: RGBA(0, 0, 0, .7);
+}
+
+#container:hover .arrow {
+    display: block;
+}
