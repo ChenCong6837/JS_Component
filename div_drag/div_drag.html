@@ -19,11 +19,10 @@
      <script>
           var elem = document.getElementById('div1');
           var clientX, clientY, moving;
-          var mouseDowmHandler = function(event){
+          var mouseDownHandler = function(event){
                event = event||window.event;
                clientX = event.clientX;
                clientY = event.clientY;
-               console.log(clientX + ',' + clientY);
                moving = true; 
           }
           var mouseMoveHandler = function(event){
@@ -55,7 +54,7 @@
                     target["on" + type] = handler;
                }
           }
-          addListener(elem, 'mousedowm', mouseDowmHandler);
+          addListener(elem, 'mousedown', mouseDownHandler);
           addListener(elem, 'mousemove', mouseMoveHandler);
           addListener(elem, 'mouseup', mouseUpHandler);
      </script>
