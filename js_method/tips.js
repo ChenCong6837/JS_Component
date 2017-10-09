@@ -12,7 +12,7 @@ function palindrome(str) {
    return temp === strToArr.reverse().join('');
  }
 
- //3.寻找一段文字中最长的单词
+//3.寻找一段文字中最长的单词
  function findLongestWord(str) {
      var strToArr = str.split(' ');
      var longestWord = strToArr[0];
@@ -22,4 +22,13 @@ function palindrome(str) {
        }
      }
      return longestWord;
+   }
+
+//将一个句子中的每一个单词的首字母大写
+function titleCase(str) {
+     var strToArr = str.split(' ');
+     var res = strToArr.map(function(value){
+       return value[0].toUpperCase() + value.slice(1).toLowerCase();
+     });
+     return res.join(' ');
    }
