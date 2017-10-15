@@ -4,4 +4,4 @@
 	slide_show：幻灯片播放；
 	div_drag:div拖拽；
 	js_method:JS的一些方法；
-	
+        pictureWall:照片墙；
