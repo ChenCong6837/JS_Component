@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>CSS Tree</title>
+     <style>
+          #container{
+               position: relative;
+               background-color: black;
+               text-align: center;
+          }
+          #main{
+               display: inline-block;
+               background-color: black;
+          }
+          #tree1{
+               width: 0;
+               height: 0;
+               border-top: 0;
+               border-right: 50px solid transparent;
+               border-bottom: 50px solid green;
+               border-left: 50px dashed transparent;
+               margin-left: 20px;
+          }
+          #tree2{
+               width: 0;
+               height: 0;
+               border-top: 0;
+               border-right: 60px solid transparent;
+               border-bottom: 60px solid green;
+               border-left: 60px dashed transparent;
+               margin: -20px 0 0 10px;/* 使树冠偏移*/
+          }
+          #tree3{
+               width: 0;
+               height: 0;
+               border-top: 0;
+               border-right: 70px solid transparent;
+               border-bottom: 70px solid green;
+               border-left: 70px dashed transparent;
+               margin-top: -30px;  
+          }
+          #treeBody{
+               width: 20px;
+               height: 60px;
+               background-color: brown;
+               margin-left: 60px;
+          }
+     </style>
+</head>
+<body>
+     <div id="container">
+          <div id="main">
+               <div id="tree1"></div>
+               <div id="tree2"></div>
+               <div id="tree3"></div>
+               <div id="treeBody"></div>
+          </div>
+     </div>
+</body>
+</html>
