@@ -24,7 +24,7 @@ function palindrome(str) {
      return longestWord;
    }
 
-//将一个句子中的每一个单词的首字母大写
+//4.将一个句子中的每一个单词的首字母大写
 function titleCase(str) {
      var strToArr = str.split(' ');
      var res = strToArr.map(function(value){
@@ -32,3 +32,16 @@ function titleCase(str) {
      });
      return res.join(' ');
    }
+
+/**
+ * 5.获取数组的最大最小值。通过apply方法将数组作为一个可变长度的参数列表，
+ * 就可以使用Math对象的min()和max()方法。
+ */
+
+function getSmallest(array){
+  return Math.min.apply(Math, array);
+}
+
+function getLargest(array){
+  return Math.max.apply(Math, array);
+}
