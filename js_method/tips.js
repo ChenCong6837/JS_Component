@@ -45,3 +45,12 @@ function getSmallest(array){
 function getLargest(array){
   return Math.max.apply(Math, array);
 }
+
+/**
+ * 6.对arguments列表进行切片（slice）和取舍（dice）
+ * 将第一个参数与剩余参数的最大值进行相乘。
+ */
+function multiMax(multi){
+  return multi * Math.max.apply(Math,
+    Array.prototype.slice.call(arguments, 1)); //Array.prototype.slice.call(arguments)将arguments转化为真正的数组
+}
