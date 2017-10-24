@@ -57,6 +57,7 @@ function multiMax(multi){
 
 /**
  * 7.函数的记忆方法
+ * 缺点：isPrime()函数的调用者也必须记住要调用memorized()方法才能使用缓存记忆功能。
  */
 
 Function.prototype.memorized = function(key){
@@ -70,9 +71,10 @@ Function.prototype.memorized = function(key){
    * 否则就开始对值进行计算，并将结果保存在缓存里，以便下次调用的时候可以再使用。
    */
   return this._values[key] !== undefined ?
-         this._values[key] : this._values[key] = this.apply(this , arguments);
+         this._values[key] : this._values[key] = this.apply(this , arguments); //计算结果、保存结果、返回结果
 };
 
+//判断是否是素数的函数
 function isPrime(num){
   var prime = num != 1;
   for(var i = 2; i < num; i++){
@@ -86,3 +88,39 @@ function isPrime(num){
 
 isPrime.memorized(5);
 isPrime._values[5];
+
+/**
+ * 8.改进：使用闭包实现的缓存记忆功能
+ */
+
+ Function.prototype.memorized = function(key){
+  this._values = this._values || {};
+  return this._values[key] !== undefined ?
+         this._values[key] : this._values[key] = this.apply(this, arguments);
+};
+
+/**
+ * memorize返回了一个包装了原始函数并且调用了memorized()方法的新函数，这样，
+ * 它返回的始终是原始函数的缓存记忆版本。
+ */
+Function.prototype.memorize = function(){
+  var fn = this;
+  //通过变量赋值将上下文带到闭包中，否则上下文就会丢失，因为它不会成为闭包的一部分。
+  return function(){
+    //在缓存记忆函数中封装原始的函数。
+    fn.memorized.apply(fn, arguments);
+  };
+};
+
+var isPrime = (function(num){
+  var prime = num != 1;
+  for(var i = 2; i < num; i++){
+    if(num % 2 == 0){
+      prime = false;
+      break;
+    }
+  }
+  return prime;
+}).memorize();
+
+isPrime(17);
