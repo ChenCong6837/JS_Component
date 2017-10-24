@@ -54,3 +54,35 @@ function multiMax(multi){
   return multi * Math.max.apply(Math,
     Array.prototype.slice.call(arguments, 1)); //Array.prototype.slice.call(arguments)将arguments转化为真正的数组
 }
+
+/**
+ * 7.函数的记忆方法
+ */
+
+Function.prototype.memorized = function(key){
+  /**
+   * 如果_value属性已经存在，则只是重新对引用进行保存；
+   * 否则就创建一个新数据存储对象（初始空对象），并将其存储在_values属性上。
+   */
+  this._values = this._values || {};
+  /**
+   * 首先检查数据存储对象里是否已经有值了，如果有，则直接返回；
+   * 否则就开始对值进行计算，并将结果保存在缓存里，以便下次调用的时候可以再使用。
+   */
+  return this._values[key] !== undefined ?
+         this._values[key] : this._values[key] = this.apply(this , arguments);
+};
+
+function isPrime(num){
+  var prime = num != 1;
+  for(var i = 2; i < num; i++){
+    if(num % i == 0){
+      prime = false;
+      break;
+    }
+  }
+  return prime;
+}
+
+isPrime.memorized(5);
+isPrime._values[5];
