@@ -3,6 +3,7 @@ function reverseStr(str){
      return str.split('').reverse().join('');
 }
 
+//======================================================================================
 //2.回文串判断，去除其他符号，是回文串就返回true，否则返回false
 function palindrome(str) {
   var strToArr = str.toLowerCase().split('').filter(function(val){
@@ -12,6 +13,7 @@ function palindrome(str) {
    return temp === strToArr.reverse().join('');
  }
 
+//======================================================================================
 //3.寻找一段文字中最长的单词
  function findLongestWord(str) {
      var strToArr = str.split(' ');
@@ -24,6 +26,7 @@ function palindrome(str) {
      return longestWord;
    }
 
+//======================================================================================
 //4.将一个句子中的每一个单词的首字母大写
 function titleCase(str) {
      var strToArr = str.split(' ');
@@ -33,6 +36,7 @@ function titleCase(str) {
      return res.join(' ');
    }
 
+//======================================================================================
 /**
  * 5.获取数组的最大最小值。通过apply方法将数组作为一个可变长度的参数列表，
  * 就可以使用Math对象的min()和max()方法。
@@ -46,6 +50,7 @@ function getLargest(array){
   return Math.max.apply(Math, array);
 }
 
+//======================================================================================
 /**
  * 6.对arguments列表进行切片（slice）和取舍（dice）
  * 将第一个参数与剩余参数的最大值进行相乘。
@@ -55,6 +60,7 @@ function multiMax(multi){
     Array.prototype.slice.call(arguments, 1)); //Array.prototype.slice.call(arguments)将arguments转化为真正的数组
 }
 
+//======================================================================================
 /**
  * 7.函数的记忆方法
  * 缺点：isPrime()函数的调用者也必须记住要调用memorized()方法才能使用缓存记忆功能。
@@ -89,6 +95,7 @@ function isPrime(num){
 isPrime.memorized(5);
 isPrime._values[5];
 
+//======================================================================================
 /**
  * 8.改进：使用闭包实现的缓存记忆功能
  */
@@ -124,3 +131,34 @@ var isPrime = (function(num){
 }).memorize();
 
 isPrime(17);
+
+//======================================================================================
+/**
+ * 9.类库包装（通过闭包和即时函数）
+ */
+
+ //9.1 第一种方法
+(function(){
+  /**
+   * 这里有两次赋值。首先jQuery构造器（作为一个匿名函数）赋值给了window.jQuery，这样就将其作为一
+   * 个全局变量了。尽管如此，也不能保证全局的jQuery变量就会一直存在，处于我们控制之外的代码可能会
+   * 改变火删除jQuery变量。为了避免这个问题，我们将其赋值给了一个局部变量jQuery，强制将其保持在即
+   * 时函数的作用域内
+   * 
+   */
+  var jQuery = window.jQuery = function(){
+      //Initialize
+  };
+  //.....
+})();
+
+//9.2 第二种方法(通常在只输出一个变量的时候，优先使用这种技巧，看起来更能体现出赋值的意义)
+var jQuery = (function(){
+  function jQuery(){
+    //Initialize
+  }
+  //....
+  return jQuery;
+})();
+
+//======================================================================================
