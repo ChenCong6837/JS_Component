@@ -179,3 +179,8 @@ if(!Array.prototype.forEach){
     }
   };
 }
+
+//测试例子：
+["a", "b", "c"].forEach(function(value, index, array){
+  //...
+});
