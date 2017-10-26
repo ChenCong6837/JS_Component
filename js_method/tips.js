@@ -188,8 +188,8 @@ if(!Array.prototype.forEach){
 });
 
 /**
- * 10.2 HTML DOM原型：在现代浏览器中，所有DOM元素都继承于HTMLElement构造器。通过访
- * 问HTMLElement的原型，浏览器可以为我们提供扩展任意HTML节点的能力。
+ * 10.2 HTML DOM原型：在现代浏览器中（IE8+,FF,Safari,Chrome以及Opera），所有DOM元素都继
+ * 承于HTMLElement构造器。通过访问HTMLElement的原型，浏览器可以为我们提供扩展任意HTML节点的能力。
  */
 
 //通过HTMLElement的原型，给所有HTML元素都添加一个新方法：
