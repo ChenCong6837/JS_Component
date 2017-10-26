@@ -169,7 +169,7 @@ var jQuery = (function(){
 SubClass.prototype = new SuperClass();
 
 /**
- * 利用原型，可以增强原生的JavaScript对象，从而给这门语言引用新的特性或丢失的特性。
+ * 10.1 利用原型，可以增强原生的JavaScript对象，从而给这门语言引用新的特性或丢失的特性。
  * 如下，给不支持forEach()的浏览器也支持该Array方法：
  */
 //首先判断是否已经存在该方法，若无，则添加到Array的原型上。
@@ -186,5 +186,28 @@ if(!Array.prototype.forEach){
 ["a", "b", "c"].forEach(function(value, index, array){
   //...
 });
+
+/**
+ * 10.2 HTML DOM原型：在现代浏览器中，所有DOM元素都继承于HTMLElement构造器。通过访
+ * 问HTMLElement的原型，浏览器可以为我们提供扩展任意HTML节点的能力。
+ */
+
+//通过HTMLElement的原型，给所有HTML元素都添加一个新方法：
+<div id="parent">
+  <div id="a">我将被删除</div>
+  <div id="b">我也是！</div>
+</div>
+
+HTMLElement.prototype.remove = function(){
+  if(this.parentNode){
+    this.parentNode.removeChild(this);
+  }
+};
+
+//原来的方法
+var a = document.getElementById("a");
+a.parentNode.removeChild("a");
+//通过扩展的方法
+document.getElementById("b").remove();
 
 //======================================================================================
