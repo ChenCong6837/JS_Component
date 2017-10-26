@@ -167,3 +167,15 @@ var jQuery = (function(){
  */
 //最好的方式是使用一个对象（父）的实例作为另一个对象（子）的原型：
 SubClass.prototype = new SuperClass();
+
+/**
+ * 利用原型，可以扩展js自身的功能，从而给这门语言引用新的特性或丢失的特性。
+ * 如下，给不支持forEach()的浏览器也支持该Array方法：
+ */
+if(!Array.prototype.forEach){
+  Array.prototype.forEach = function(callback, context){
+    for(var i =  0; i < this.length; i++){
+      callback.call(context||null, this[i], i, this);
+    }
+  };
+}
