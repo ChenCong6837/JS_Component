@@ -169,12 +169,14 @@ var jQuery = (function(){
 SubClass.prototype = new SuperClass();
 
 /**
- * 利用原型，可以扩展js自身的功能，从而给这门语言引用新的特性或丢失的特性。
+ * 利用原型，可以增强原生的JavaScript对象，从而给这门语言引用新的特性或丢失的特性。
  * 如下，给不支持forEach()的浏览器也支持该Array方法：
  */
+//首先判断是否已经存在该方法，若无，则添加到Array的原型上。
 if(!Array.prototype.forEach){
   Array.prototype.forEach = function(callback, context){
     for(var i =  0; i < this.length; i++){
+      //context||null防止我们降undefined传递给call()
       callback.call(context||null, this[i], i, this);
     }
   };
@@ -184,3 +186,5 @@ if(!Array.prototype.forEach){
 ["a", "b", "c"].forEach(function(value, index, array){
   //...
 });
+
+//======================================================================================
