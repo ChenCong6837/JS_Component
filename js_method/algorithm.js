@@ -63,4 +63,23 @@ function findMaxDuplicateChar(str) {
 
 findMaxDuplicateChar('fasdfhjkasdhfiulwerasdfadaaaa');//出现最多次的字符：a，出现了：8次
 
+//正则的做法
+function findMaxDuplicateChar1(str) {
+     var arr = str.split("");
+     arr.sort(); //让相同的字符挨在一起
+     str = arr.join("");
+     var regExp = /(\w)\1+/g; //匹配相同的字符字串
+     var maxChar = '',
+         maxValue = 0;
+     str.replace(regExp, function($0, $1){ 
+       if(maxValue < $0.length){
+         maxValue = $0.length;
+         maxChar = $1;
+       }
+     })
+     return "出现最多次的字符：" + maxChar + "，出现了：" + maxValue + "次";
+   }
+   
+   findMaxDuplicateChar1('fasdfhjkasdhfiulwerasdfadaaaa');
+
 //======================================================================================
