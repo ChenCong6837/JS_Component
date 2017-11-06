@@ -83,3 +83,50 @@ function findMaxDuplicateChar1(str) {
    findMaxDuplicateChar1('fasdfhjkasdhfiulwerasdfadaaaa');
 
 //======================================================================================
+/**
+ * 问题：排序算法
+ * @param arr：输入需要排序的数组
+ * @return :排完序后的数组
+ */
+
+function bubbleSort(arr) {
+  var temp;
+  if(arr.length === 1){
+       return arr[0];
+  }
+  for(var i = 0, len = arr.length; i < len; i++){
+       for( var j = i; j < len; j++){
+            if(arr[i] > arr[j]){
+                 temp = arr[i];
+                 arr[i] = arr[j];
+                 arr[j] = temp;
+            }
+       }
+  }
+  return arr;
+}
+
+bubbleSort([5,2,3,6,4,9]); //[2,3,4,5,6,9]
+
+
+function quickSort(arr) {
+  if(arr.length <= 1){
+       return arr;
+  }
+  let leftArr = [];
+  let rightArr = [];
+  let q = arr[0];
+  for(let i = 1, len = arr.length; i < len; i++){
+       if(arr[i] > q){
+            rightArr.push(arr[i]);
+       }else{
+            leftArr.push(arr[i]);
+       }
+  } 
+  return [].concat(quickSort(leftArr), [q], quickSort(rightArr));
+}
+
+quickSort([1,2423,45,2342,3,23456345,2342,34,345,34,5,234,23,4,345,234,654,6,537,38]);
+//[1, 3, 4, 5, 6, 23, 34, 34, 38, 45, 234, 234, 345, 345, 537, 654, 2342, 2342, 2423, 23456345]
+
+//======================================================================================
