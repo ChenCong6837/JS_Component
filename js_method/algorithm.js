@@ -153,3 +153,40 @@ function getFibonacci(n) {
 getFibonacci(7);//[1, 1, 2, 3, 5, 8, 13]
 
 //======================================================================================
+/**
+ * 问题：找出正数组的最大差值
+ * @param arr：输入的数组
+ * @return maxProfit：最大的差值
+ */
+
+function getMaxProfit(arr) {
+  var minPrice = arr[0];
+  var maxProfit = 0;
+  for(var i = 0, len = arr.length; i < len; i++){
+       var currentPrice = arr[i];
+       minPrice = Math.min(minPrice, currentPrice);
+       var potentialProfit = currentPrice - minPrice;
+       maxProfit = Math.max(maxProfit, potentialProfit);
+  }
+  return maxProfit;
+}
+
+getMaxProfit([23,45,21,6,34,23,654]);//648
+
+
+function myGetMaxProfit(arr) {
+  var maxValue = arr[0],
+      minValue = arr[0];
+ for(var i = 0, len = arr.length; i < len; i ++){
+      if(maxValue < arr[i]){
+           maxValue = arr[i];
+      }
+      if(minValue > arr[i]){
+           minValue = arr[i];
+      }
+ }
+ return maxValue - minValue;
+}
+
+myGetMaxProfit([23,45,21,6,34,23,654]);//648
+//======================================================================================
