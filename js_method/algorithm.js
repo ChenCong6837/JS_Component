@@ -189,6 +189,7 @@ function myGetMaxProfit(arr) {
 }
 
 myGetMaxProfit([23,45,21,6,34,23,654]);//648
+
 //======================================================================================
 /**
  * 问题：随机生成指定长度的字符串
@@ -205,4 +206,32 @@ function getRandomStr(n) {
   }
   return randomStr;
 }
+
+//======================================================================================
+/**
+ * 问题：实现类似getElementsByClassName的功能
+ * @param node：
+ * @param name：查找的名字
+ * @return： 所有class为name的节点
+ */
+
+function queryClassName(node, name) {
+  var starts = '(^|[\n\r\t\f])',
+       ends = '([\n\r\t\f]|$)';
+  var array = [],
+       regExp = new RegExp(starts + name + ends),
+       elements = node.getElementsByTagName('*'),
+       len = elements.length,
+       i = 0,
+       element;
+  while(i < len){
+       element = elements[i];
+       if(regExp.test(element.ClassName)){
+            array.push(element);
+       }
+       i++;
+  }
+  return array;
+}
+
 //======================================================================================
