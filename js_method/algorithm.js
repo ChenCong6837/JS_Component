@@ -190,3 +190,19 @@ function myGetMaxProfit(arr) {
 
 myGetMaxProfit([23,45,21,6,34,23,654]);//648
 //======================================================================================
+/**
+ * 问题：随机生成指定长度的字符串
+ * @param n:生成字符串的长度
+ * @return ：生成的字符串
+ */
+
+function getRandomStr(n) {
+  var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ9876543210';
+  var randomStr = '';
+  while(n > 0){
+       randomStr += str.charAt(Math.floor(Math.random()*62));
+       n--;
+  }
+  return randomStr;
+}
+//======================================================================================
