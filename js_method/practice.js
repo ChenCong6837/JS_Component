@@ -235,3 +235,18 @@ function queryClassName(node, name) {
 }
 
 //======================================================================================
+/**
+ * 问题：将以“-”连接的字符串改成驼峰写法
+ * @param str：输入需要转化的字符串
+ * @return： 返回转化后的字符串
+ */
+var str = "my-name-is-chen-cong"
+
+//字符串和数组结合的方法
+function changeToCamel1(str) {
+  var arr = str.split("-"); //[my,name,is,chen,cong]
+  for(var i = 1; i < arr.length; i++){
+    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1);
+  } //[my,Name,Is,Chen,Cong]
+  return arr.join(""); //"myNameIsChenCong"
+} 
