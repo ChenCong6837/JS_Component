@@ -249,4 +249,14 @@ function changeToCamel1(str) {
     arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1);
   } //[my,Name,Is,Chen,Cong]
   return arr.join(""); //"myNameIsChenCong"
-} 
+}
+console.log(changeToCamel1(str));//"myNameIsChenCong"
+
+//正则表达式的方法
+function changeToCamel2(str) {
+  var regExp = /-(\w)/g;
+  return str.replace(regExp, function($0, $1){
+    return $1.toUpperCase();
+  });
+}
+console.log(changeToCamel2(str));
