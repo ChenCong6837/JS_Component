@@ -260,3 +260,32 @@ function changeToCamel2(str) {
   });
 }
 console.log(changeToCamel2(str));
+
+//======================================================================================
+/**
+ * 问题：给字符串添加千分位符
+ */
+
+function splitNum1(str) {
+  var iNum = str.length % 3; //可能的结果0,1,2
+  var prev = '';
+  var arr = [];
+  var temp = '';
+  var iNow = 0;
+  if(iNum != 0){
+    prev = str.substring(0, iNum);
+    arr.push(prev);
+  }
+  str = str.substring(iNum);
+  for(var i  = 0; i < str.length; i++){
+    iNow++;
+    temp += str[i];
+    if(iNow === 3){
+      arr.push(temp);
+      iNow = 0;
+      temp = '';
+    }
+  }
+  return arr.join(',');
+}
+splitNum1("18868876837"); //"18,868,876,837"
