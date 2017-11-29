@@ -324,3 +324,108 @@ function exchange2(a, b){
 exchange2('abc','def'); //a=def,b=abc
 
 //======================================================================================
+/**
+ * 问题：有一个数n，不用for循环，怎么返回[1，2，3...n]这样一个数组
+ */
+
+ //利用递归
+ function show1(n) {
+  var arr = [];
+  return (function(){
+    arr.unshift(n);
+    n--;
+    if(n != 0){
+      arguments.callee();
+    }
+    return arr;
+  })();
+}
+
+show1(10); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+//利用replace
+function show2(n) {
+  var arr = [];
+  arr.length = n + 1;
+  var str = arr.join('a');
+  var arr2 = [];
+  str.replace(/a/g, function(){
+    arr2.unshift(n--);
+  })
+  return arr2;
+}
+
+show2(10); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+/******************************** method end *********************************/
+/*################################## function and test end ###################################*/
+
+
+/******************************* method begin ********************************/
+/**
+ * 问题：一个数n，当n小于100就返回n，否则返回100
+ */
+
+ function showN(n) {
+
+  // if...else
+  if(n < 100){
+    return n;
+  }else{
+    return 100
+  }
+
+
+
+  // ? :
+  return n > 100 ? 100 : n;
+
+
+
+  //switch
+  switch(n>100){
+    case true : return 100; break;
+    case false : return n;break;
+  }
+
+
+
+  //Math.min(n,100);
+  return Math.min(n,100);
+
+
+
+  //利用数组的sort
+  var arr = [n, 100];
+  arr.sort(function(n1, n2){
+    return n1 - n2;
+  });
+  return arr[0];
+
+
+
+  //用循环for,while,do while
+  var m = "" + n;
+  for(var i = 2; i < m.length && n > 0; i++){
+    return 100;
+  }
+  return n;
+
+
+
+
+  //利用for in
+  var obj = {name:"cc"};
+  var m = n < 100 || obj;
+  for(var attr in m){
+    return 100;
+  }
+  return n;
+
+
+
+  // 利用&&和||
+  var  m = n >= 100 && 100;
+  return m = m||n;
+
+ }
