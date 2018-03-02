@@ -211,7 +211,6 @@ a.parentNode.removeChild("a");
 document.getElementById("b").remove();
 
 //======================================================================================
-
 /**
  * 11.快速让一个数组乱序
  */
@@ -221,3 +220,22 @@ arr.sort(function(){
     return Math.random() - 0.5;
 })
 console.log(arr);
+
+//======================================================================================
+/**
+ * JS判断设备来源
+ */
+
+function deviceType(){
+  var ua = navigator.userAgent;
+  var agent = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];   
+  for(var i=0, len = agent.length; i<len; i++){
+      if(ua.indexOf(agent[i])>0){         
+          break;
+      }
+  }
+}
+deviceType();
+window.addEventListener('resize', function(){
+  deviceType();
+})
