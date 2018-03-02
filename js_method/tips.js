@@ -211,3 +211,13 @@ a.parentNode.removeChild("a");
 document.getElementById("b").remove();
 
 //======================================================================================
+
+/**
+ * 11.快速让一个数组乱序
+ */
+
+var arr = [1,2,3,4,5,6,7,8,9,10];
+arr.sort(function(){
+    return Math.random() - 0.5;
+})
+console.log(arr);
