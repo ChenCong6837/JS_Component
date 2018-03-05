@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas')
+        const ctx = canvas.getContext('2d')
+
+        const W = canvas.width = 900
+        const H = canvas.height = 700
+
+        canvas.style.border = '8px solid #000'
+
+        // rp([1, 3]) ==> 1 | 2 | 3
+        // rp([3, 1], true) ==> 1 - 3 之间随机的小数
+        const rp = function (arr, uint) {
+            const min = Math.min(...arr)
+            const max = Math.max(...arr)
+            const ret = Math.random() * (max - min) + min
+            return uint ? ret : Math.round(ret)
+        }
+
+        const maxBranch = 3
+
+        tree(ctx, W / 2, H / 2 + 200, 70, -Math.PI / 2, 14, 20)
+
+        function tree(ctx, startX, startY, branchLen, angle, depth, branchWidth) {
+            const endX = startX + branchLen * Math.cos(angle)
+            const endY = startY + branchLen * Math.sin(angle)
+
+            const color = (depth--) < maxBranch - 1 ? `rgb(0, ${rp([128, 196])}, 0)` : 'rgb(68, 50, 25)'
+
+            ctx.save()
+            ctx.lineCap = 'round'
+            ctx.lineWidth = branchWidth
+            ctx.strokeStyle = color
+            ctx.beginPath()
+            ctx.moveTo(startX, startY)
+            ctx.lineTo(endX, endY)
+            ctx.stroke()
+            ctx.restore()
+
+            if (!depth) return
+
+            const subBranches = rp([1, maxBranch])
+
+            for (let i = 0; i < subBranches; i++) {
+                setTimeout(
+                    tree,
+                    0,
+                    ctx,
+                    endX,
+                    endY,
+                    branchLen * rp([0.7, 1], true),
+                    angle + rp([-Math.PI / 5, Math.PI / 5], true),
+                    depth,
+                    branchWidth * 0.72
+                )
+            }
+        }
+    </script>
+</body>
+
+</html>
