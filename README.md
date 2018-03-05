@@ -6,3 +6,4 @@
 	js_method:JS的一些方法；
 	pictureWall:照片墙；
 	css_tree:使用CSS的border属性画简单的树；
+	随机生长的树：浏览器打开会随机生成一课树
