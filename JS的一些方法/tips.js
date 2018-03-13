@@ -1,3 +1,9 @@
+/*
+ * @Author: ChenCong 
+ * @Date: 2018-03-13 18:46:13 
+ * @Last Modified by:   ChenCong 
+ * @Last Modified time: 2018-03-13 18:46:13 
+ */
 //1.反转字符串
 function reverseStr(str){
      return str.split('').reverse().join('');
