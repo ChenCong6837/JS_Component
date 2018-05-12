@@ -1,9 +1,12 @@
-# JS_Component	
-	自己整理的一些组件:
-	breathe_light:呼吸灯，可以点击控制开关；
-	slide_show：幻灯片播放；
-	div_drag:div拖拽；
-	js_method:JS的一些方法；
-	pictureWall:照片墙；
-	css_tree:使用CSS的border属性画简单的树；
-	随机生长的树：浏览器打开会随机生成一课树
+# JS_Component
+
+**自己整理的一些组件**:
+
+1. JS一些方法；
+2. div拖拽；
+3. 呼吸灯，可以点击控制开关；
+4. 幻灯片播放，即轮播图；
+5. 导航栏满天星的效果；
+6. 照片墙；
+7. 使用CSS的border属性画简单的树；
+8. 浏览器打开会随机生成一课树。
